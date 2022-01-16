@@ -1,14 +1,16 @@
-import React from 'react'
-import Student from './Student'
+import React from "react";
+import Student from "./Student";
 
-function StudentsList(props) {
-    const list = props.list.map(student =>
-        <Student student={student} />)
-    return (
-        <div>
-            {list}
-        </div>
-    )
+function StudentsList({ list, deletStudent, updateStudent }) {
+  const lists = list.map((student) => (
+    <Student
+      student={student}
+      deletStudent={deletStudent}
+      updateStudent={updateStudent}
+      key={student.id}
+    />
+  ));
+  return <div>{lists}</div>;
 }
 
-export default StudentsList
+export default StudentsList;
