@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Form from "./Components/Form";
 import HeaderAndTitle from "./Components/HeaderAndTitle";
 import StudentsList from "./Components/StudentsList";
 
 function App() {
+  const
   const [studentsInfo, setStudentsInfo] = useState([]);
   const [show, setShow] = useState(false);
 
@@ -21,7 +22,7 @@ function App() {
   };
 
   const updateStudent = (updatedStudent) => {
-    let tempstudent = studentsInfo.filter(
+    let tempstudent = studentsInfo.find(
       (student) => student.id === updatedStudent.id
     );
     setStudentsInfo(tempstudent);
@@ -31,13 +32,9 @@ function App() {
     <div className="App">
       <HeaderAndTitle showList={setShow} show={show} />
       {show ? (
-        <StudentsList
-          list={studentsInfo}
-          deletStudent={deletStudent}
-          updateStudent={updateStudent}
-        />
+        <StudentsList list={studentsInfo} deletStudent={deletStudent} />
       ) : (
-        <Form addStudent={addStudent} />
+        <Form addStudent={addStudent} updateStudent={updateStudent} />
       )}
     </div>
   );

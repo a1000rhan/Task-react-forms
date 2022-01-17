@@ -26,9 +26,12 @@ function Form({ addStudent }) {
   const handleChange = (event) => {
     setStudent({ ...student, [event.target.name]: event.target.value });
   };
+  const handleUpdate = (event) => {
+    setStudent({ ...student, [event.target.name]: event.target.value });
+  };
   return (
     <div className="form-page">
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit} onUpdate={handleUpdate}>
         <label>Frist Name</label>
         <input name="name" onChange={handleChange} value={student.name} />
 
@@ -59,6 +62,7 @@ function Form({ addStudent }) {
         />
 
         <input type="submit" value="Add Student" />
+        <button type="update">update</button>
       </form>
       <SideInfo />
     </div>
